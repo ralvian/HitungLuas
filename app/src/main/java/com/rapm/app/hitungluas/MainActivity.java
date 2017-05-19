@@ -1,14 +1,13 @@
 package com.rapm.app.hitungluas;
 
-import android.os.StrictMode;
-import android.renderscript.Double2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,12 +32,33 @@ public class MainActivity extends AppCompatActivity {
                 String panjang = edtPanjang.getText().toString().trim();
                 String lebar = edtLebar.getText().toString().trim();
 
-                double p = Double.parseDouble(panjang);
-                double l = Double.parseDouble(lebar);
+                if(TextUtils.isEmpty(edtPanjang.getText()) || TextUtils.isEmpty(edtLebar.getText())){
 
-                double luas = p * l;
+                    Toast.makeText(getApplicationContext(),"Nilai yang dimasukkan tidak boleh kosong",Toast.LENGTH_SHORT).show();
 
-                txtLuas.setText("Luas  : ="+luas);
+                }else {
+
+                    double p = Double.parseDouble(panjang);
+                    double l = Double.parseDouble(lebar);
+
+                    double luas = p * l;
+
+                    txtLuas.setText("Luas  : ="+luas);
+
+                }
+
+//                try{
+//                    double panjang = Double.valueOf(edtPanjang.getText().toString());
+//                    double lebar = Double.valueOf(edtLebar.getText().toString());
+//
+//                    double luas = panjang * lebar;
+//
+//                    txtLuas.setText("Luas  : ="+luas);
+//
+//                }catch (NumberFormatException e){
+//                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+//                }
+
             }
         });
     }
