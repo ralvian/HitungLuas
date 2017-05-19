@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         btnHitung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
-                String panjang = edtPanjang.getText().toString().trim();
-                String lebar = edtLebar.getText().toString().trim();
 
                 if(TextUtils.isEmpty(edtPanjang.getText()) || TextUtils.isEmpty(edtLebar.getText())){
 
@@ -38,28 +36,25 @@ public class MainActivity extends AppCompatActivity {
 
                 }else {
 
-                    double p = Double.parseDouble(panjang);
-                    double l = Double.parseDouble(lebar);
-
-                    double luas = p * l;
-
-                    txtLuas.setText("Luas  : ="+luas);
+                    hitungluas();
 
                 }
 
-//                try{
-//                    double panjang = Double.valueOf(edtPanjang.getText().toString());
-//                    double lebar = Double.valueOf(edtLebar.getText().toString());
-//
-//                    double luas = panjang * lebar;
-//
-//                    txtLuas.setText("Luas  : ="+luas);
-//
-//                }catch (NumberFormatException e){
-//                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-//                }
-
             }
         });
+    }
+
+    public void hitungluas() {
+        try{
+            double panjang = Double.valueOf(edtPanjang.getText().toString());
+            double lebar = Double.valueOf(edtLebar.getText().toString());
+
+            double luas = panjang * lebar;
+
+            txtLuas.setText("Luas  : ="+luas);
+
+        }catch (NumberFormatException e){
+            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
     }
 }
